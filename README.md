@@ -43,3 +43,17 @@ vagran ssh
 Data directory default: `/var/lib/elasticsearch`
 Log directory default: `/var/log/elasticsearch`
 Config directory: `/etc/elasticsearch`
+
+
+Inside the directory you can ping the nodes:
+
+```bash
+ansible node1 -m ping
+node1 | SUCCESS => {
+    "changed": false,
+    "failed": false,
+    "ping": "pong"
+}
+```
+
+It is using the `ansible.cfg` file where we overwritten the inventory file (`inventory.ini`)
