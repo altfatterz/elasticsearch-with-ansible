@@ -57,3 +57,9 @@ node1 | SUCCESS => {
 ```
 
 It is using the `ansible.cfg` file where we overwritten the inventory file (`inventory.ini`)
+
+Install elasticsearch on the nodes:
+
+```bash
+ansible-playbook elasticsearch.yml
+```

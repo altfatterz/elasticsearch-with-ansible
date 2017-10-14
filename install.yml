@@ -1,14 +1,7 @@
 ---
 - hosts: all
   become: yes
-  gather_facts: yes
-
-#  roles:
-#    - role: elastic.elasticsearch
-#      es_version: 5.6.3
-#      es_instance_name: "node1"
-##      otherwise it hangs on TASK [elastic.elasticsearch : Wait for elasticsearch to startup]
-#      es_heap_size: "512m"
+  gather_facts: no
 
   tasks:
     - name: update host file
