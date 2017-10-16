@@ -1,11 +1,12 @@
+### Getting started guide
 
 ```bash
-ansible-galaxy install -r requirements
+ansible-galaxy install -r requirements.yml
 ```
 
 This will create clone the role into the roles folder
 
-Run then vagrant up:
+Start up the 3 VMs:
 
 ```
 vagrant up
@@ -17,8 +18,13 @@ Cleanup:
 vagrant destroy -f
 ```
 
+SSH into one of the VMs:
+
 ```bash
-vagran ssh
+vagran ssh node1
+
+
+Check that elasticsearch is runnnig:
 
 ```bash
 [vagrant@elasticsearch ~]$ curl localhost:9200
@@ -43,7 +49,6 @@ vagran ssh
 Data directory default: `/var/lib/elasticsearch`
 Log directory default: `/var/log/elasticsearch`
 Config directory: `/etc/elasticsearch`
-
 
 Inside the directory you can ping the nodes:
 
