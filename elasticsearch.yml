@@ -12,7 +12,8 @@
         es_config: {
           node.name: "node1",
           cluster.name: "demo",
-          discovery.zen.ping.unicast.hosts: "node2:9300, node3:9300",
+          network.host: "_enp0s8_",
+          discovery.zen.ping.unicast.hosts: "node1:9300, node2:9300, node3:9300",
 #          discovery.zen.minimum_master_nodes: 2,
           http.port: 9200,
           transport.tcp.port: 9300,
@@ -20,51 +21,54 @@
         }
       }
   vars:
-    es_heap_size: "512m"
+    es_heap_size: "1g"
 
-#- hosts: node2
-#  become: yes
-#  gather_facts: yes
-#
-#  roles:
-#    - { role: elastic.elasticsearch,
-#        es_version: 5.6.3,
-#        es_instance_name: "node2",
-#        es_data_dirs: "/opt/elasticsearch/data",
-#        es_log_dir: "/opt/elasticsearch/logs",
-#        es_config: {
-#          node.name: "node1",
-#          cluster.name: "demo",
-#          discovery.zen.ping.unicast.hosts: "node1:9300, node3:9300",
-##          discovery.zen.minimum_master_nodes: 2,
-#          http.port: 9200,
-#          transport.tcp.port: 9300,
-#          bootstrap.memory_lock: false
-#        }
-#      }
-#  vars:
-#    es_heap_size: "512m"
-#
-#
-#- hosts: node3
-#  become: yes
-#  gather_facts: yes
-#
-#  roles:
-#    - { role: elastic.elasticsearch,
-#        es_version: 5.6.3,
-#        es_instance_name: "node3",
-#        es_data_dirs: "/opt/elasticsearch/data",
-#        es_log_dir: "/opt/elasticsearch/logs",
-#        es_config: {
-#          node.name: "node3",
-#          cluster.name: "demo",
-#          discovery.zen.ping.unicast.hosts: "node1:9300, node2:9300",
-##          discovery.zen.minimum_master_nodes: 2,
-#          http.port: 9200,
-#          transport.tcp.port: 9300,
-#          bootstrap.memory_lock: false
-#        }
-#      }
-#  vars:
-#    es_heap_size: "512m"
+- hosts: node2
+  become: yes
+  gather_facts: yes
+
+  roles:
+    - { role: elastic.elasticsearch,
+        es_version: 5.6.3,
+        es_instance_name: "node2",
+        es_data_dirs: "/opt/elasticsearch/data",
+        es_log_dir: "/opt/elasticsearch/logs",
+        es_config: {
+          node.name: "node1",
+          cluster.name: "demo",
+          # waits here until it times out TASK [elastic.elasticsearch : Wait for elasticsearch to startup]
+          network.host: "_enp0s8_",
+          discovery.zen.ping.unicast.hosts: "node1:9300, node2:9300, node3:9300",
+#          discovery.zen.minimum_master_nodes: 2,
+          http.port: 9200,
+          transport.tcp.port: 9300,
+          bootstrap.memory_lock: false
+        }
+      }
+  vars:
+    es_heap_size: "1g"
+
+
+- hosts: node3
+  become: yes
+  gather_facts: yes
+
+  roles:
+    - { role: elastic.elasticsearch,
+        es_version: 5.6.3,
+        es_instance_name: "node3",
+        es_data_dirs: "/opt/elasticsearch/data",
+        es_log_dir: "/opt/elasticsearch/logs",
+        es_config: {
+          node.name: "node3",
+          cluster.name: "demo",
+          network.host: "_enp0s8_",
+          discovery.zen.ping.unicast.hosts: "node1:9300, node2:9300, node3:9300",
+#          discovery.zen.minimum_master_nodes: 2,
+          http.port: 9200,
+          transport.tcp.port: 9300,
+          bootstrap.memory_lock: false
+        }
+      }
+  vars:
+    es_heap_size: "1g"

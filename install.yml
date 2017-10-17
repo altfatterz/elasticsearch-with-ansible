@@ -8,7 +8,7 @@
       blockinfile:
         path: /etc/hosts
         block: |
-          10.0.15.21 node1
-          10.0.15.22 node2
-          10.0.15.23 node3
+          172.28.128.11 node1
+          172.28.128.12 node2
+          172.28.128.13 node3
 
