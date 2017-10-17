@@ -14,7 +14,7 @@
           cluster.name: "demo",
           network.host: "_enp0s8:ipv4_, _local_",
           discovery.zen.ping.unicast.hosts: "node1:9300, node2:9300, node3:9300",
-#          discovery.zen.minimum_master_nodes: 2,
+          discovery.zen.minimum_master_nodes: 2,
           http.port: 9200,
           transport.tcp.port: 9300,
           bootstrap.memory_lock: false
@@ -39,7 +39,7 @@
           # waits here until it times out TASK [elastic.elasticsearch : Wait for elasticsearch to startup]
           network.host: "_enp0s8:ipv4_, _local_",
           discovery.zen.ping.unicast.hosts: "node1:9300, node2:9300, node3:9300",
-#          discovery.zen.minimum_master_nodes: 2,
+          discovery.zen.minimum_master_nodes: 2,
           http.port: 9200,
           transport.tcp.port: 9300,
           bootstrap.memory_lock: false
@@ -64,7 +64,7 @@
           cluster.name: "demo",
           network.host: "_enp0s8:ipv4_, _local_",
           discovery.zen.ping.unicast.hosts: "node1:9300, node2:9300, node3:9300",
-#          discovery.zen.minimum_master_nodes: 2,
+          discovery.zen.minimum_master_nodes: 2,
           http.port: 9200,
           transport.tcp.port: 9300,
           bootstrap.memory_lock: false
