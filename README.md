@@ -88,8 +88,11 @@ Check the cluster nodes
 Configured directories on the nodes:
 
 Data directory default: `/opt/elasticsearch/data`
+
 Log directory default: `/opt/elasticsearch/logs`
+
 Config directory: `/etc/elasticsearch`
+
 
 It is using the `ansible.cfg` file where we overwritten the inventory file (`inventory.ini`)
 
