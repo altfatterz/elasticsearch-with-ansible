@@ -1,5 +1,5 @@
 ---
-- hosts: nodes
+- hosts: elasticsearch_nodes
   become: yes
   gather_facts: yes
   serial: 1
