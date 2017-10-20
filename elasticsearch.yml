@@ -7,14 +7,14 @@
   roles:
     - { role: elastic.elasticsearch,
         es_version: 5.6.3,
-        es_instance_name: "{{ ansible_hostname }}",
+        es_instance_name: "{{ inventory_hostname }}",
         es_data_dirs: "/opt/elasticsearch/data",
         es_log_dir: "/opt/elasticsearch/logs",
         es_config: {
-          node.name: "{{ ansible_hostname }}",
+          node.name: "{{ inventory_hostname }}",
           cluster.name: "demo",
-          network.host: "_enp0s8:ipv4_, _local_",
-          discovery.zen.ping.unicast.hosts: "node1:9300, node2:9300, node3:9300",
+          network.host: "{{ inventory_hostname }}, _local_",
+          discovery.zen.ping.unicast.hosts: "{{ ansible_play_hosts | join(', ') }}",
           discovery.zen.minimum_master_nodes: 2,
           http.port: 9200,
           transport.tcp.port: 9300,
