@@ -97,6 +97,17 @@ Executables: `/usr/share/elasticsearch/`
 
 It is using the `ansible.cfg` file where we overwritten the inventory file (`inventory.ini`)
 
+The `elaticsearch` service name is `<es_instance_name>_elasticsearch`
+
+```bash
+systemctl status node1_elasticsearch
+systemctl restart node1_elasticsearch
+systemctl stop node1_elasticsearch
+```
+
+It is found in the `/etc/systemd/system/multi-user.target.wants`
+Would be nice to use it with an alias like `elasticsearch`, indifferent which node is running, discussion about it is here: [https://github.com/elastic/ansible-elasticsearch/issues/336](https://github.com/elastic/ansible-elasticsearch/issues/336)
+
 Cleanup:
 
 ```bash
