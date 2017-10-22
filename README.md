@@ -95,7 +95,6 @@ Config directory: `/etc/elasticsearch`
 
 Executables: `/usr/share/elasticsearch/`
 
-
 It is using the `ansible.cfg` file where we overwritten the inventory file (`inventory.ini`)
 
 Cleanup:
@@ -103,3 +102,48 @@ Cleanup:
 ```bash
 vagrant destroy -f
 ```
+
+Connecting without username and password:
+
+```bash
+[root@node1 system]# curl localhost:9200?pretty
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "security_exception",
+        "reason" : "missing authentication token for REST request [/?pretty]",
+        "header" : {
+          "WWW-Authenticate" : "Basic realm=\"security\" charset=\"UTF-8\""
+        }
+      }
+    ],
+    "type" : "security_exception",
+    "reason" : "missing authentication token for REST request [/?pretty]",
+    "header" : {
+      "WWW-Authenticate" : "Basic realm=\"security\" charset=\"UTF-8\""
+    }
+  },
+  "status" : 401
+}
+```
+
+Connecting with username and password:
+
+```bash
+root@node1 system]# curl -u rdeniro:goodfellas localhost:9200?pretty
+{
+  "name" : "node1",
+  "cluster_name" : "demo",
+  "cluster_uuid" : "sXt1Sc5ISa2QndjsKYJpug",
+  "version" : {
+    "number" : "5.6.3",
+    "build_hash" : "1a2f265",
+    "build_date" : "2017-10-06T20:33:39.012Z",
+    "build_snapshot" : false,
+    "lucene_version" : "6.6.1"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
+

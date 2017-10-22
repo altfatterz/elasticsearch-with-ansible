@@ -3,7 +3,8 @@
   become: yes
   gather_facts: yes
 #  ansible-playbook elasticsearch.yml  49.53s user 17.50s system 15% cpu 7:10.62 total
-  serial: 1
+#  serial: 1
+#  ansible-playbook elasticsearch.yml  42.10s user 18.16s system 31% cpu 3:08.93 total
 
   roles:
     - { role: elastic.elasticsearch,
