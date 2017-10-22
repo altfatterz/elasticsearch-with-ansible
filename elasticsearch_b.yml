@@ -1,0 +1,49 @@
+---
+- hosts: elasticsearch_nodes
+  become: yes
+  gather_facts: yes
+#  ansible-playbook elasticsearch.yml  49.53s user 17.50s system 15% cpu 7:10.62 total
+#  serial: 1
+#  ansible-playbook elasticsearch.yml  42.10s user 18.16s system 31% cpu 3:08.93 total
+
+  roles:
+    - { role: elastic.elasticsearch,
+        es_version: 5.6.3,
+        es_instance_name: "{{ inventory_hostname }}_b",
+        es_data_dirs: "/opt/elasticsearch/data",
+        es_log_dir: "/opt/elasticsearch/logs",
+        es_config: {
+          node.name: "{{ inventory_hostname }}_b",
+          cluster.name: "demo_b",
+          network.host: "{{ inventory_hostname }}, _local_",
+          discovery.zen.ping.unicast.hosts: "{{ ansible_play_hosts | join(', ') }}",
+          discovery.zen.minimum_master_nodes: 2,
+          http.port: 9202,
+          transport.tcp.port: 9302,
+          bootstrap.memory_lock: false
+        }
+      }
+  vars:
+    es_api_port: 9202,
+    es_heap_size: "512m"
+    es_enable_xpack: true,
+    es_xpack_features:
+      - security
+    es_api_basic_auth_username: rdeniro
+    es_api_basic_auth_password: goodfellas
+    es_users:
+      file:
+        rdeniro:
+          password: goodfellas
+          roles:
+            - admin
+    es_roles:
+      file:
+        admin:
+          cluster:
+            - all
+          indices:
+            - names: '*'
+              privileges:
+                - all
+

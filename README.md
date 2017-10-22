@@ -158,3 +158,6 @@ root@node1 system]# curl -u rdeniro:goodfellas localhost:9200?pretty
 }
 ```
 
+```bash
+curl -u rdeniro:goodfellas localhost:9200/_cluster/stats?pretty
+```
