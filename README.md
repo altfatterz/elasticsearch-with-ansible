@@ -161,3 +161,9 @@ root@node1 system]# curl -u rdeniro:goodfellas localhost:9200?pretty
 ```bash
 curl -u rdeniro:goodfellas localhost:9200/_cluster/stats?pretty
 ```
+
+Ansible tags:
+
+```bash 
+ansible-playbook playbook.yml --list-tags 
+```

@@ -1,0 +1,11 @@
+---
+- hosts: elasticsearch_nodes
+
+  tasks:
+   - lineinfile:
+       path: /tmp/testfile
+       create: yes
+       state: present
+       line: 'dummy'
+     tags:
+      - foo
