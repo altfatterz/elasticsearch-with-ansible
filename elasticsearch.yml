@@ -14,7 +14,7 @@
         es_log_dir: "/opt/elasticsearch/logs",
         es_config: {
           node.name: "{{ inventory_hostname }}",
-          cluster.name: "demo",
+          cluster.name: "falcon",
           network.host: "{{ inventory_hostname }}, _local_",
           discovery.zen.ping.unicast.hosts: "{{ ansible_play_hosts | join(', ') }}",
           discovery.zen.minimum_master_nodes: 2,
@@ -28,14 +28,22 @@
     es_enable_xpack: true,
     es_xpack_features:
       - security
-    es_api_basic_auth_username: rdeniro
-    es_api_basic_auth_password: goodfellas
+    es_api_basic_auth_username: admin
+    es_api_basic_auth_password: verysecret
     es_users:
       file:
-        rdeniro:
-          password: goodfellas
+        admin:
+          password: verysecret
           roles:
             - admin
+        dataloader:
+          password: mimacom
+          roles:
+            - dataloader
+        edorasone:
+          password: loveyourwork
+          roles:
+            - edorasone
     es_roles:
       file:
         admin:
@@ -45,4 +53,22 @@
             - names: '*'
               privileges:
                 - all
+        dataloader:
+          cluster:
+            - transport_client
+          indices:
+            - names: 'dl.*'
+              privileges:
+                - all
+        edorasone:
+          cluster:
+            - transport_client
+          indices:
+            - names: 'edo.*'
+              privileges:
+                - all
+            - names: 'dl.*'
+              privileges:
+                - read
+
 
