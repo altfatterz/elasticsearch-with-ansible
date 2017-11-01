@@ -1,3 +1,5 @@
 .idea
 .vagrant
 /roles/elastic.elasticsearch
+/roles/geerlingguy.kibana
+

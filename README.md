@@ -167,3 +167,8 @@ Ansible tags:
 ```bash 
 ansible-playbook playbook.yml --list-tags 
 ```
+
+
+Check this:
+
+https://github.com/mrlesmithjr/ansible-elk-kibana
