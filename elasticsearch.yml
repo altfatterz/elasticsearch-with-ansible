@@ -18,10 +18,6 @@
           network.host: "{{ inventory_hostname }}, _local_",
           discovery.zen.ping.unicast.hosts: "{{ ansible_play_hosts | join(', ') }}",
           discovery.zen.minimum_master_nodes: 2,
-#          xpack.security.authc.realms.file1.type: "file",
-#          xpack.security.authc.realms.file1.order: 0,
-#          xpack.security.authc.realms.native1.type: "native",
-#          xpack.security.authc.realms.native1.order: 1,
           http.port: 9200,
           transport.tcp.port: 9300,
           bootstrap.memory_lock: false
@@ -32,19 +28,15 @@
     es_enable_xpack: true,
     es_xpack_features:
       - security
-    es_api_basic_auth_username: test
+    es_api_basic_auth_username: admin
     es_api_basic_auth_password: secret
     es_users:
       file:
-        test:
+        admin:
           password: secret
           roles:
-            - file_admin
-      native:
-        admin:
-          password: verysecret
-          roles:
             - admin
+      native:
         dataloader:
           password: mimacom
           roles:
@@ -55,14 +47,6 @@
             - edorasone
     es_roles:
       file:
-        file_admin:
-          cluster:
-            - all
-          indices:
-            - names: '*'
-              privileges:
-                - all
-      native:
         admin:
           cluster:
             - all
@@ -70,6 +54,7 @@
             - names: '*'
               privileges:
                 - all
+      native:
         dataloader:
           cluster:
             - transport_client
