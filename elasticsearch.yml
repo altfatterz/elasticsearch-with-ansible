@@ -74,3 +74,6 @@
                 - read
 
 
+# TODO
+# change default users password, or disable them
+# expose the service to the host
