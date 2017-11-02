@@ -24,7 +24,7 @@
         }
       }
   vars:
-    es_heap_size: "1g"
+    es_heap_size: "512m"
     es_enable_xpack: true,
     es_xpack_features:
       - security
