@@ -2,7 +2,7 @@
   roles:
     - role: sansible.kibana
       kibana:
-        host: kibana
+        host: 0.0.0.0
         install_dir: /usr/share/kibana/
         tarball: kibana-5.6.3-linux-x86_64
         download_base_url: https://artifacts.elastic.co/downloads/kibana/
@@ -14,4 +14,3 @@
           port: 9200
 
 # currently the x-pack was installed manually on it
-# not sure how to expose the service to the host
