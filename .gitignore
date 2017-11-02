@@ -2,4 +2,5 @@
 .vagrant
 /roles/elastic.elasticsearch
 /roles/geerlingguy.kibana
+/roles/sansible.kibana
 

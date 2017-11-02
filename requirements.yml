@@ -2,6 +2,6 @@
   version: 5.5.1
   name: elastic.elasticsearch
 
-- src: https://github.com/geerlingguy/ansible-role-kibana
-  version: 2.0.1
-  name: geerlingguy.kibana
+- src: https://github.com/sansible/kibana
+  version: v1.1.2
+  name: sansible.kibana
