@@ -1,5 +1,4 @@
 ---
-
 - name: "install kibana"
   become: yes
   yum:
@@ -10,4 +9,9 @@
 - name: "copy configuration File"
   become: yes
   template: src=kibana.yml.j2 dest=/etc/kibana/kibana.yml mode=0644 force=yes
+  notify: restart kibana
+
+- name: "install xpack"
+  become: yes
+  command: "/usr/share/kibana/bin/kibana-plugin install {{ kibana_xpack_package_url }}"
   notify: restart kibana
