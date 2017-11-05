@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  gather_facts: yes
+
+  tasks:
+    - name: set fact 1
+      set_fact: foo=1
+
+    - debug:
+        var: foo
+

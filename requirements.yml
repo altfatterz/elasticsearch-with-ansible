@@ -1,5 +1,5 @@
 - src: https://github.com/elastic/ansible-elasticsearch
-  version: 5.5.1
+  version: 7714c925e06e8538a09b6e9d8c1bd074813e9639
   name: elastic.elasticsearch
 
 - src: https://github.com/sansible/kibana
