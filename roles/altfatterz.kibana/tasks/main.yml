@@ -1,0 +1,13 @@
+---
+
+- name: "install kibana"
+  become: yes
+  yum:
+    name: "{{ kibana_package_url }}"
+    state: present
+  notify: restart kibana
+
+- name: "copy configuration File"
+  become: yes
+  template: src=kibana.yml.j2 dest=/etc/kibana/kibana.yml mode=0644 force=yes
+  notify: restart kibana

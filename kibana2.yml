@@ -1,0 +1,4 @@
+- hosts: kibana_nodes
+  roles:
+    - role: altfatterz.kibana
+      kibana_elasticsearch_url: http://node1:9200
