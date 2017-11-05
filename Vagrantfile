@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
     kibana.vm.box = "centos/7"
     kibana.vm.hostname = "kibana"
     kibana.vm.network :private_network, ip: "172.28.128.21"
-    kibana.vm.network "forwarded_port", guest: 5601, host: 5602
+    kibana.vm.network "forwarded_port", guest: 5601, host: 5601
     kibana.vm.provider "virtualbox" do |vb|
       vb.memory = "2048"
       vb.name = "kibana_vm"

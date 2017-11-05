@@ -14,3 +14,10 @@
           port: 9200
 
 # currently the x-pack was installed manually on it
+# /usr/share/kibana/bin/kibana-plugin install x-pack
+
+# add possibility to download artifacts without internet
+# install the with ansible
+
+
+
