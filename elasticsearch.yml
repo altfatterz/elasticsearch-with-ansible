@@ -43,6 +43,7 @@
       native:
         dataloader:
           cluster:
+            - manage_index_templates
             - transport_client
           indices:
             - names: 'dl.*'
@@ -50,6 +51,7 @@
                 - all
         edorasone:
           cluster:
+            - manage_index_templates
             - transport_client
           indices:
             - names: 'edo.*'
